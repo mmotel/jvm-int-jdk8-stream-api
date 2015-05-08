@@ -1,8 +1,10 @@
 package pl.jint.demo.lambdas;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.OptionalDouble;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.stream.Collector;
@@ -136,8 +138,17 @@ public class Lambdas {
 	}
 
 	public Object countAvgLength(List<String> input2) {
-		// TODO Auto-generated method stub
-		return null;
+		//Solution 1
+//		return OptionalDouble.of(
+//				input2
+//				.stream()
+//				.map((s) -> s.length())
+//				.collect(Collectors.averagingDouble((l) -> l))
+//				);
+		//Solution 2
+		return  input2.stream()
+				.mapToInt(String::length)
+				.average();
 	}
 
 	public Object countStringsLongerThan(List<String> input2, int i) {
