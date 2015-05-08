@@ -105,14 +105,21 @@ public class Lambdas {
 	 * @return
 	 */
 	public String printSortedJava8StreamApiAndMethodReferenceInParallel(List<String> strings) {
-		StringBuilder result = new StringBuilder();
 		// Lets to it in parallel
-		strings.stream()
+		//Solution 1
+//		StringBuilder result = new StringBuilder();
+//		strings.stream()
+//		.parallel()
+//		.sorted((s1, s2) -> s2.compareToIgnoreCase(s1))
+//		.forEachOrdered(result::append);
+//		return result.toString();
+		
+		//Solution 2
+		String result = strings.stream()
 		.parallel()
 		.sorted((s1, s2) -> s2.compareToIgnoreCase(s1))
-		.forEachOrdered(result::append);
-
-		return result.toString();
+		.collect(Collectors.joining());
+		return result;
 	}
 
 	/**
