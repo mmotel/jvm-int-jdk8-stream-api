@@ -1,15 +1,18 @@
 package pl.jint.demo.lambdas;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalDouble;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.google.common.collect.Lists;
-
 public class LambdasTest {
 
-	private static final List<String> input = Lists.newArrayList("bAAb", "CaaD", "abba");
+	private static final List<String> input = Arrays.asList(new String[] {"bAAb", "CaaD", "abba"});
+	private static final List<String> input2 = Arrays.asList(new String[] {"4444", "666666", "22"});
+	
 	private static final String expectedResult = "CaaDbAAbabba";
 	private Lambdas lambdas = new Lambdas();
 
@@ -58,4 +61,19 @@ public class LambdasTest {
 		Assert.assertEquals("CaaDabbabAAb", lambdas.printSortedJava8(input, null /*TODO: (s1, s2) -> s1.compareTo(s2)*/));
 	}
 
+	
+	@Test
+	public void testCountAvgLength() {
+		Assert.assertEquals(OptionalDouble.of(4.0), lambdas.countAvgLength(input2));
+	}
+	
+	@Test
+	public void testCountStringsLongerThan3() {
+		Assert.assertEquals(2, lambdas.countStringsLongerThan(input2, 3));
+	}
+	
+	@Test
+	public void testGetLongestString() {
+		Assert.assertEquals(Optional.of("666666"), lambdas.getLongest(input2));
+	}
 }

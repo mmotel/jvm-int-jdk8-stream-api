@@ -123,4 +123,19 @@ public class Lambdas {
 		return result.toString();
 	}
 
+	public Object countAvgLength(List<String> input2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object countStringsLongerThan(List<String> input2, int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object getLongest(List<String> input2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
