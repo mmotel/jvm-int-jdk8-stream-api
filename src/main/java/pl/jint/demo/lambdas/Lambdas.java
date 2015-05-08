@@ -151,9 +151,10 @@ public class Lambdas {
 				.average();
 	}
 
-	public Object countStringsLongerThan(List<String> input2, int i) {
-		// TODO Auto-generated method stub
-		return null;
+	public long countStringsLongerThan(List<String> input2, int i) {
+		return input2.stream()
+				.filter((s) -> s.length() > i)
+				.count();
 	}
 
 	public Object getLongest(List<String> input2) {
