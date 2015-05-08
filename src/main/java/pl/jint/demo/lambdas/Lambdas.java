@@ -158,8 +158,12 @@ public class Lambdas {
 	}
 
 	public Object getLongest(List<String> input2) {
-		// TODO Auto-generated method stub
-		return null;
+		//Solution 1
+//		return input2.stream()
+//				.collect(Collectors.maxBy((s1, s2) -> Integer.compare(s1.length() , s2.length())));
+		//Solution 2
+		return input2.stream()
+				.max((s1, s2) -> Integer.compare(s1.length() , s2.length()));
 	}
 
 }
