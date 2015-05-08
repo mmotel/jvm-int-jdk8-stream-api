@@ -5,6 +5,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Lambdas {
 
@@ -90,11 +92,10 @@ public class Lambdas {
 	}
 
 	public String printSortedJava8StreamApiAndMethodReference(List<String> strings) {
-		StringBuilder result = new StringBuilder();
 		// Using method reference
-		strings.stream().sorted((s1, s2) -> s2.compareToIgnoreCase(s1)).forEach(result::append);
-
-		return result.toString();
+		String result = strings.stream().sorted((s1, s2) -> s2.compareToIgnoreCase(s1))
+		.collect(Collectors.joining()); //TODO
+		return result;
 	}
 
 	/**
@@ -106,7 +107,10 @@ public class Lambdas {
 	public String printSortedJava8StreamApiAndMethodReferenceInParallel(List<String> strings) {
 		StringBuilder result = new StringBuilder();
 		// Lets to it in parallel
-		strings.stream().parallel().sorted((s1, s2) -> s2.compareToIgnoreCase(s1)).forEach(result::append);
+		strings.stream()
+		.parallel()
+		.sorted((s1, s2) -> s2.compareToIgnoreCase(s1))
+		.forEachOrdered(result::append);
 
 		return result.toString();
 	}
