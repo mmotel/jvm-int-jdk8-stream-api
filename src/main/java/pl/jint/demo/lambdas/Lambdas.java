@@ -3,6 +3,7 @@ package pl.jint.demo.lambdas;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
 public class Lambdas {
@@ -117,9 +118,9 @@ public class Lambdas {
 	 * @param orderFunction
 	 * @return
 	 */
-	public String printSortedJava8(List<String> strings, Object orderFunction) {
+	public String printSortedJava8(List<String> strings, BiFunction<String,String, Integer> orderFunction) {
 		StringBuilder result = new StringBuilder();
-
+		strings.stream().sorted(orderFunction::apply).forEach(result::append);
 		return result.toString();
 	}
 

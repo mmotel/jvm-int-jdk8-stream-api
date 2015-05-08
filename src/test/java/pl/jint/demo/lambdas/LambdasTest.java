@@ -58,7 +58,7 @@ public class LambdasTest {
 	
 	@Test
 	public void testPrintSortedJava8() {
-		Assert.assertEquals("CaaDabbabAAb", lambdas.printSortedJava8(input, null /*TODO: (s1, s2) -> s1.compareTo(s2)*/));
+		Assert.assertEquals("CaaDabbabAAb", lambdas.printSortedJava8(input, (s1, s2) -> s1.compareTo(s2)));
 	}
 
 	
